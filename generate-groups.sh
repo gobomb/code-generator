@@ -49,8 +49,9 @@ shift 4
 (
   # To support running this script from anywhere, we have to first cd into this directory
   # so we can install the tools.
+  # use -mod=vendor to support old version install
   cd $(dirname "${0}")
-  go install ${GOFLAGS:-} ./cmd/{defaulter-gen,client-gen,lister-gen,informer-gen,deepcopy-gen}
+  go install -mod=vendor ${GOFLAGS:-} ./cmd/{defaulter-gen,client-gen,lister-gen,informer-gen,deepcopy-gen}
 )
 
 function codegen::join() { local IFS="$1"; shift; echo "$*"; }
